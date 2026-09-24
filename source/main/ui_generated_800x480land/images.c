@@ -66,8 +66,8 @@ const ext_img_desc_t images[116] = {
     { "wifi_conn", &img_wifi_conn },
     { "wifi_disconn", &img_wifi_disconn },
     { "settings", &img_settings },
-    { "effect_icon_amp_off", &img_effect_icon_amp_off },
     { "effect_icon_amp_on", &img_effect_icon_amp_on },
+    { "effect_icon_amp_off", &img_effect_icon_amp_off },
     { "effect_icon_cab_off", &img_effect_icon_cab_off },
     { "effect_icon_cab_on", &img_effect_icon_cab_on },
     { "effect_icon_comp_off", &img_effect_icon_comp_off },
@@ -116,5 +116,5 @@ const ext_img_desc_t images[116] = {
     { "tc_on", &img_tc_on },
     { "amp_disabled", &img_amp_disabled },
     { "cab_disabled", &img_cab_disabled },
-    { "tuner", &img_tuner },
+    { "Home_Button", &img_home_button },
 };

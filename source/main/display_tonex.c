@@ -872,10 +872,7 @@ void tonex_action_parameter_changed(lv_event_t * e)
     {
         usb_modify_parameter(TONEX_GLOBAL_MASTER_VOLUME, lv_slider_get_value(obj));    
     }
-    else if (obj == objects.ui_direct_monitor_switch)
-    {
-        usb_modify_parameter(TONEX_GLOBAL_DIRECT_MONITOR, lv_obj_has_state(obj, LV_STATE_CHECKED) ? 1 : 0);
-    }
+  
     else
     {
         ESP_LOGW(TAG, "Unknown Parameter changed");    
@@ -2658,17 +2655,7 @@ uint8_t tonex_update_ui_parameters(void)
                     lv_obj_set_user_data(objects.ui_volume_value, (void*)(uintptr_t)TONEX_GLOBAL_MASTER_VOLUME);                                        
                 } break;
 
-                case TONEX_GLOBAL_DIRECT_MONITOR:
-                {
-                    if (param_entry->Value)
-                    {
-                        lv_obj_add_state(objects.ui_direct_monitor_switch, LV_STATE_CHECKED);
-                    }
-                    else
-                    {
-                        lv_obj_clear_state(objects.ui_direct_monitor_switch, LV_STATE_CHECKED);
-                    }
-                } break;
+            
             } 
 
             tonex_params_release_locked_access();
