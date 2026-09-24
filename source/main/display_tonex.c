@@ -1231,18 +1231,24 @@ uint8_t tonex_update_ui_parameters(void)
                     }
                 } break;
 
-                case TONEX_PARAM_MODEL_GAIN:
+              case TONEX_PARAM_MODEL_GAIN:
                 {
                     lv_slider_set_range(objects.ui_amplifier_gain_slider, round(param_entry->Min), round(param_entry->Max * 10.0f));
-                    lv_slider_set_value(objects.ui_amplifier_gain_slider, round(param_entry->Value * 10.0f), LV_ANIM_OFF);     
+                    lv_slider_set_value(objects.ui_amplifier_gain_slider, round(param_entry->Value * 10.0f), LV_ANIM_OFF);
 
                     // show value and units
                     sprintf(value_string, "%1.1f", param_entry->Value);
-                    lv_label_set_text(objects.ui_amplifier_gain_value, value_string);        
-                    
+                    lv_label_set_text(objects.ui_amplifier_gain_value, value_string);
+
+                    // New MAIN page
+                    lv_bar_set_range(objects.ui_amplifier_gain_bar_1, round(param_entry->Min * 10.0f), round(param_entry->Max * 10.0f));
+                    lv_bar_set_value(objects.ui_amplifier_gain_bar_1, round(param_entry->Value * 10.0f), LV_ANIM_OFF);
+                    lv_label_set_text(objects.ui_amplifier_gain_value_1, value_string);
+
                     // set user data for later use
-                    lv_obj_set_user_data(objects.ui_amplifier_gain_value, (void*)(uintptr_t)TONEX_PARAM_MODEL_GAIN);                                        
-                } break;
+                    lv_obj_set_user_data(objects.ui_amplifier_gain_value, (void*)(uintptr_t)TONEX_PARAM_MODEL_GAIN);
+                }
+                break;
 
                 case TONEX_PARAM_MODEL_VOLUME:
                 {
@@ -1462,6 +1468,9 @@ uint8_t tonex_update_ui_parameters(void)
                         sprintf(value_string, "%d%%", (int)round(param_entry->Value));
                         lv_label_set_text(objects.ui_reverb_mix_value, value_string);          
                         
+                        lv_bar_set_range(objects.ui_reverb_mix_bar_1, round(param_entry->Min), round(param_entry->Max));
+                        lv_bar_set_value(objects.ui_reverb_mix_bar_1, round(param_entry->Value), LV_ANIM_OFF);
+                        lv_label_set_text(objects.ui_reverb_mix_value_1, value_string);
                         // set user data for later use
                         lv_obj_set_user_data(objects.ui_reverb_mix_value, (void*)(uintptr_t)TONEX_PARAM_REVERB_SPRING1_MIX);                    
                     }
@@ -1526,6 +1535,10 @@ uint8_t tonex_update_ui_parameters(void)
                         sprintf(value_string, "%d%%", (int)round(param_entry->Value));
                         lv_label_set_text(objects.ui_reverb_mix_value, value_string);          
                         
+                        // New MAIN page
+                        lv_bar_set_range(objects.ui_reverb_mix_bar_1, round(param_entry->Min), round(param_entry->Max));
+                        lv_bar_set_value(objects.ui_reverb_mix_bar_1, round(param_entry->Value), LV_ANIM_OFF);
+                        lv_label_set_text(objects.ui_reverb_mix_value_1, value_string);
                         // set user data for later use
                         lv_obj_set_user_data(objects.ui_reverb_mix_value, (void*)(uintptr_t)TONEX_PARAM_REVERB_SPRING2_MIX);                    
                     }
@@ -1588,8 +1601,11 @@ uint8_t tonex_update_ui_parameters(void)
                         
                         // show value and units
                         sprintf(value_string, "%d%%", (int)round(param_entry->Value));
-                        lv_label_set_text(objects.ui_reverb_mix_value, value_string);      
-                        
+                        lv_label_set_text(objects.ui_reverb_mix_value, value_string);  
+                    
+                        lv_bar_set_range(objects.ui_reverb_mix_bar_1, round(param_entry->Min), round(param_entry->Max));
+                        lv_bar_set_value(objects.ui_reverb_mix_bar_1, round(param_entry->Value), LV_ANIM_OFF);
+                        lv_label_set_text(objects.ui_reverb_mix_value_1, value_string);
                         // set user data for later use
                         lv_obj_set_user_data(objects.ui_reverb_mix_value, (void*)(uintptr_t)TONEX_PARAM_REVERB_SPRING3_MIX);                    
                     }
@@ -1654,6 +1670,9 @@ uint8_t tonex_update_ui_parameters(void)
                         sprintf(value_string, "%d%%", (int)round(param_entry->Value));
                         lv_label_set_text(objects.ui_reverb_mix_value, value_string);        
                         
+                        lv_bar_set_range(objects.ui_reverb_mix_bar_1, round(param_entry->Min), round(param_entry->Max));
+                        lv_bar_set_value(objects.ui_reverb_mix_bar_1, round(param_entry->Value), LV_ANIM_OFF);
+                        lv_label_set_text(objects.ui_reverb_mix_value_1, value_string);
                         // set user data for later use
                         lv_obj_set_user_data(objects.ui_reverb_mix_value, (void*)(uintptr_t)TONEX_PARAM_REVERB_SPRING4_MIX);                    
                     }
@@ -1718,6 +1737,9 @@ uint8_t tonex_update_ui_parameters(void)
                         sprintf(value_string, "%d%%", (int)round(param_entry->Value));
                         lv_label_set_text(objects.ui_reverb_mix_value, value_string);        
                         
+                        lv_bar_set_range(objects.ui_reverb_mix_bar_1, round(param_entry->Min), round(param_entry->Max));
+                        lv_bar_set_value(objects.ui_reverb_mix_bar_1, round(param_entry->Value), LV_ANIM_OFF);
+                        lv_label_set_text(objects.ui_reverb_mix_value_1, value_string);
                         // set user data for later use
                         lv_obj_set_user_data(objects.ui_reverb_mix_value, (void*)(uintptr_t)TONEX_PARAM_REVERB_ROOM_MIX);                    
                     }
@@ -1782,6 +1804,9 @@ uint8_t tonex_update_ui_parameters(void)
                         sprintf(value_string, "%d%%", (int)round(param_entry->Value));
                         lv_label_set_text(objects.ui_reverb_mix_value, value_string);        
                         
+                        lv_bar_set_range(objects.ui_reverb_mix_bar_1, round(param_entry->Min), round(param_entry->Max));
+                        lv_bar_set_value(objects.ui_reverb_mix_bar_1, round(param_entry->Value), LV_ANIM_OFF);
+                        lv_label_set_text(objects.ui_reverb_mix_value_1, value_string);
                         // set user data for later use
                         lv_obj_set_user_data(objects.ui_reverb_mix_value, (void*)(uintptr_t)TONEX_PARAM_REVERB_PLATE_MIX);                    
                     }
@@ -2474,6 +2499,9 @@ uint8_t tonex_update_ui_parameters(void)
                         sprintf(value_string, "%d%%", (int)round(param_entry->Value));
                         lv_label_set_text(objects.ui_delay_mix_value, value_string);      
                         
+                        lv_bar_set_range(objects.ui_delay_mix_bar_1, round(param_entry->Min), round(param_entry->Max));
+                        lv_bar_set_value(objects.ui_delay_mix_bar_1, round(param_entry->Value), LV_ANIM_OFF);
+                        lv_label_set_text(objects.ui_delay_mix_value_1, value_string);
                         // set user data for later use
                         lv_obj_set_user_data(objects.ui_delay_mix_value, (void*)(uintptr_t)TONEX_PARAM_DELAY_DIGITAL_MIX);                    
                     }
@@ -2566,6 +2594,10 @@ uint8_t tonex_update_ui_parameters(void)
                         sprintf(value_string, "%d%%", (int)round(param_entry->Value));
                         lv_label_set_text(objects.ui_delay_mix_value, value_string);      
                         
+
+                        lv_bar_set_range(objects.ui_delay_mix_bar_1, round(param_entry->Min), round(param_entry->Max));
+                        lv_bar_set_value(objects.ui_delay_mix_bar_1, round(param_entry->Value), LV_ANIM_OFF);
+                        lv_label_set_text(objects.ui_delay_mix_value_1, value_string);
                         // set user data for later use
                         lv_obj_set_user_data(objects.ui_delay_mix_value, (void*)(uintptr_t)TONEX_PARAM_DELAY_TAPE_MIX);                    
                     }
