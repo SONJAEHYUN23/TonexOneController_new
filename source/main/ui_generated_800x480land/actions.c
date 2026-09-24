@@ -4,11 +4,11 @@
 void action_show_main_page(lv_event_t * e)
 {
     (void)e;
-    lv_scr_load(objects.screen_main);
+    loadScreen(SCREEN_ID_SCREEN_MAIN);
 }
 
 void action_show_sub_main_page(lv_event_t * e)
 {
     (void)e;
-    lv_scr_load(objects.screen1);
+    loadScreen(SCREEN_ID_SCREEN1);
 }

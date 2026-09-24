@@ -1470,6 +1470,11 @@ static  __attribute__((unused)) uint8_t update_ui_element(tUIUpdate* update)
         {
 #if CONFIG_TONEX_CONTROLLER_DISPLAY_FULL_UI
             lv_label_set_text(element_1, update->Text);
+
+            if (update->ElementID == UI_ELEMENT_PRESET_NAME)
+            {
+                lv_label_set_text(objects.ui_preset_heading_label_1, update->Text);
+            }
 #elif CONFIG_TONEX_CONTROLLER_DISPLAY_SMALL
             if (element_1 == objects.ui_preset_heading_label)
             {

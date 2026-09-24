@@ -1007,11 +1007,15 @@ uint8_t tonex_update_ui_parameters(void)
                     {
                         lv_obj_add_state(objects.ui_noise_gate_switch, LV_STATE_CHECKED);
                         lv_img_set_src(objects.ui_icon_gate, (lv_obj_t*)&img_effect_icon_gate_on);
+                        lv_img_set_src(objects.ui_icon_gate_1, (lv_obj_t*)&img_effect_icon_gate_on);
+
                     }
                     else
                     {
                         lv_obj_clear_state(objects.ui_noise_gate_switch, LV_STATE_CHECKED);
                         lv_img_set_src(objects.ui_icon_gate, (lv_obj_t*)&img_effect_icon_gate_off);
+                        lv_img_set_src(objects.ui_icon_gate_1, (lv_obj_t*)&img_effect_icon_gate_off);
+
                     }
                 } break;
 
@@ -1072,11 +1076,13 @@ uint8_t tonex_update_ui_parameters(void)
                     {
                         lv_obj_add_state(objects.ui_compressor_enable_switch, LV_STATE_CHECKED);
                         lv_img_set_src(objects.ui_icon_comp, (lv_obj_t*)&img_effect_icon_comp_on);
+                        lv_img_set_src(objects.ui_icon_comp_1, (lv_obj_t*)&img_effect_icon_comp_on);
                     }
                     else
                     {
                         lv_obj_clear_state(objects.ui_compressor_enable_switch, LV_STATE_CHECKED);
                         lv_img_set_src(objects.ui_icon_comp, (lv_obj_t*)&img_effect_icon_comp_off);
+                        lv_img_set_src(objects.ui_icon_comp_1, (lv_obj_t*)&img_effect_icon_comp_off);
                     }
                 } break;
 
@@ -1204,11 +1210,15 @@ uint8_t tonex_update_ui_parameters(void)
                     {
                         lv_obj_add_state(objects.ui_amp_enable_switch, LV_STATE_CHECKED);
                         lv_img_set_src(objects.ui_icon_amp, (lv_obj_t*)&img_effect_icon_amp_on);
+                        lv_img_set_src(objects.ui_icon_amp_1, (lv_obj_t*)&img_effect_icon_amp_on);
+
                     }
                     else
                     {
                         lv_obj_clear_state(objects.ui_amp_enable_switch, LV_STATE_CHECKED);
                         lv_img_set_src(objects.ui_icon_amp, (lv_obj_t*)&img_effect_icon_amp_off);
+                        lv_img_set_src(objects.ui_icon_amp_1, (lv_obj_t*)&img_effect_icon_amp_off);
+
                     }
                 } break;
 
@@ -1224,10 +1234,14 @@ uint8_t tonex_update_ui_parameters(void)
                     if (param_entry->Value == TONEX_CABINET_DISABLED)
                     {
                         lv_img_set_src(objects.ui_icon_cab, (lv_obj_t*)&img_effect_icon_cab_off);
+                        lv_img_set_src(objects.ui_icon_cab_1, (lv_obj_t*)&img_effect_icon_cab_off);
+
                     }
                     else
                     {
                         lv_img_set_src(objects.ui_icon_cab, (lv_obj_t*)&img_effect_icon_cab_on);
+                        lv_img_set_src(objects.ui_icon_cab_1, (lv_obj_t*)&img_effect_icon_cab_on);
+
                     }
                 } break;
 
@@ -1368,32 +1382,40 @@ uint8_t tonex_update_ui_parameters(void)
                             case TONEX_REVERB_SPRING_1:
                             {
                                 lv_img_set_src(objects.ui_icon_reverb, (lv_obj_t*)&img_effect_icon_reverb_on_s1);
+                                lv_img_set_src(objects.ui_icon_reverb_1, (lv_obj_t*)&img_effect_icon_reverb_on_s1);
                             } break;
 
                             case TONEX_REVERB_SPRING_2:
                             {
                                 lv_img_set_src(objects.ui_icon_reverb, (lv_obj_t*)&img_effect_icon_reverb_on_s2);
+                                lv_img_set_src(objects.ui_icon_reverb_1, (lv_obj_t*)&img_effect_icon_reverb_on_s2);
+
                             } break;
 
                             case TONEX_REVERB_SPRING_3:
                             {
                                 lv_img_set_src(objects.ui_icon_reverb, (lv_obj_t*)&img_effect_icon_reverb_on_s3);
+                                lv_img_set_src(objects.ui_icon_reverb_1, (lv_obj_t*)&img_effect_icon_reverb_on_s3);
+
                             } break;
 
                             case TONEX_REVERB_SPRING_4:
                             {
                                 lv_img_set_src(objects.ui_icon_reverb, (lv_obj_t*)&img_effect_icon_reverb_on_s4);
+                                lv_img_set_src(objects.ui_icon_reverb_1, (lv_obj_t*)&img_effect_icon_reverb_on_s4);
                             } break;
 
                             case TONEX_REVERB_ROOM:
                             {
                                 lv_img_set_src(objects.ui_icon_reverb, (lv_obj_t*)&img_effect_icon_reverb_on_r);
+                                lv_img_set_src(objects.ui_icon_reverb_1, (lv_obj_t*)&img_effect_icon_reverb_on_r);
                             } break;
 
                             case TONEX_REVERB_PLATE:
                             default:
                             {
                                 lv_img_set_src(objects.ui_icon_reverb, (lv_obj_t*)&img_effect_icon_reverb_on_p);
+                                lv_img_set_src(objects.ui_icon_reverb_1, (lv_obj_t*)&img_effect_icon_reverb_on_p);
                             } break;
                         }
                     }
@@ -1401,6 +1423,7 @@ uint8_t tonex_update_ui_parameters(void)
                     {
                         lv_obj_clear_state(objects.ui_reverb_enable_switch, LV_STATE_CHECKED);
                         lv_img_set_src(objects.ui_icon_reverb, (lv_obj_t*)&img_effect_icon_reverb_off);
+                        lv_img_set_src(objects.ui_icon_reverb_1, (lv_obj_t*)&img_effect_icon_reverb_off);
                     }
                 } break;
 
@@ -1836,27 +1859,36 @@ uint8_t tonex_update_ui_parameters(void)
                             case TONEX_MODULATION_CHORUS:
                             {
                                 lv_img_set_src(objects.ui_icon_mod, (lv_obj_t*)&img_effect_icon_mod_on_chorus);
+                                lv_img_set_src(objects.ui_icon_mod_1, (lv_obj_t*)&img_effect_icon_mod_on_chorus);
+
                             } break;
 
                             case TONEX_MODULATION_TREMOLO:
                             {
                                 lv_img_set_src(objects.ui_icon_mod, (lv_obj_t*)&img_effect_icon_mod_on_tremolo);
+                                lv_img_set_src(objects.ui_icon_mod_1, (lv_obj_t*)&img_effect_icon_mod_on_tremolo);
+
                             } break;
 
                             case TONEX_MODULATION_PHASER:
                             {
                                 lv_img_set_src(objects.ui_icon_mod, (lv_obj_t*)&img_effect_icon_mod_on_phaser);
+                                lv_img_set_src(objects.ui_icon_mod_1, (lv_obj_t*)&img_effect_icon_mod_on_phaser);
                             } break;
 
                             case TONEX_MODULATION_FLANGER:
                             {
                                 lv_img_set_src(objects.ui_icon_mod, (lv_obj_t*)&img_effect_icon_mod_on_flanger);
+                                lv_img_set_src(objects.ui_icon_mod_1, (lv_obj_t*)&img_effect_icon_mod_on_flanger);
+
                             } break;
 
                             case TONEX_MODULATION_ROTARY:
                             default:
                             {
                                 lv_img_set_src(objects.ui_icon_mod, (lv_obj_t*)&img_effect_icon_mod_on_rotary);
+                                lv_img_set_src(objects.ui_icon_mod_1, (lv_obj_t*)&img_effect_icon_mod_on_rotary);
+
                             } break;
                         }
                     }
@@ -1864,6 +1896,7 @@ uint8_t tonex_update_ui_parameters(void)
                     {
                         lv_obj_clear_state(objects.ui_modulation_enable_switch, LV_STATE_CHECKED);
                         lv_img_set_src(objects.ui_icon_mod, (lv_obj_t*)&img_effect_icon_mod_off);
+                        lv_img_set_src(objects.ui_icon_mod_1, (lv_obj_t*)&img_effect_icon_mod_off);
                     }
                 } break;
 
@@ -2391,12 +2424,14 @@ uint8_t tonex_update_ui_parameters(void)
                              case TONEX_DELAY_DIGITAL:
                              {
                                  lv_img_set_src(objects.ui_icon_delay, (lv_obj_t*)&img_effect_icon_delay_on_d);
+                                 lv_img_set_src(objects.ui_icon_delay_1, (lv_obj_t*)&img_effect_icon_delay_on_d);
                              } break;
 
                              case TONEX_DELAY_TAPE:
                              default:
                              {
                                  lv_img_set_src(objects.ui_icon_delay, (lv_obj_t*)&img_effect_icon_delay_on_t);
+                                 lv_img_set_src(objects.ui_icon_delay_1, (lv_obj_t*)&img_effect_icon_delay_on_t);
                              } break;
                          }
                     }
@@ -2404,6 +2439,7 @@ uint8_t tonex_update_ui_parameters(void)
                     {
                         lv_obj_clear_state(objects.ui_delay_enable_switch, LV_STATE_CHECKED);
                         lv_img_set_src(objects.ui_icon_delay, (lv_obj_t*)&img_effect_icon_delay_off);
+                        lv_img_set_src(objects.ui_icon_delay_1, (lv_obj_t*)&img_effect_icon_delay_off);
                     }
                 } break;
 
