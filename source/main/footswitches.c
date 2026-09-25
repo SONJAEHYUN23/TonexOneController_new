@@ -42,6 +42,8 @@ limitations under the License.
 #include "usb_tonex_one.h"
 #include "leds.h"
 #include "SX1509.h"
+#include "SX1509_encoder.h"
+#include "encoder_control.h"
 #include "midi_helper.h"
 #include "tonex_params.h"
 
@@ -995,6 +997,35 @@ void footswitches_init(i2c_master_bus_handle_t bus_handle, SemaphoreHandle_t I2C
     else
     {
         ESP_LOGI(TAG, "External IO Expander not found");
+    }
+
+
+    // init encoder IO expander (0x72)
+    if (SX1509E_Init(bus_handle, I2CMutex) == ESP_OK)
+    {
+        ESP_LOGI(TAG, "Found Encoder IO Expander");
+
+        // init encoder pins as inputs
+        for (uint8_t pin = 0; pin < 15; pin++)
+        {
+            SX1509E_gpioMode(pin, EXPANDER_INPUT_PULLUP);
+        }
+
+        encoder_control_init();
+
+        xTaskCreatePinnedToCore(
+            encoder_control_task,
+            "ENCODER",
+            4096,
+            NULL,
+            5,
+            NULL,
+            1
+        );
+    }
+    else
+    {
+        ESP_LOGI(TAG, "Encoder IO Expander not found");
     }
 
     // init leds
