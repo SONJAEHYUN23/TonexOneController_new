@@ -7,6 +7,7 @@
 #include "freertos/task.h"
 #include <stdbool.h>
 #include "ui.h"
+#include "display.h"
 
 void usb_modify_parameter(uint16_t index, float value);
 
@@ -112,16 +113,19 @@ void encoder_control_task(void *arg)
                             {
                                 control_request_preset_up();
                             }
-                            else if (i == 1)
+                           else if (i == 1)
                             {
-                                encoders[i].value++;
+                                encoders[i].value--;
+
+                                if (encoders[i].value < 0)
+                                    encoders[i].value = 0;
 
                                 usb_modify_parameter(
                                     TONEX_PARAM_MODEL_GAIN,
                                     (float)encoders[i].value / 10.0f
                                 );
                             }
-                            else if (i == 2)
+                             else if (i == 2)
                             {
                                 encoders[i].value++;
 
@@ -502,20 +506,7 @@ void encoder_control_task(void *arg)
                             /* Encoder 5 popup */
                             if (i == 4)
                             {
-                                if (encoders[i].active)
-                                {
-                                    lv_obj_clear_flag(
-                                        objects.ui_master_popup,
-                                        LV_OBJ_FLAG_HIDDEN
-                                    );
-                                }
-                                else
-                                {
-                                    lv_obj_add_flag(
-                                        objects.ui_master_popup,
-                                        LV_OBJ_FLAG_HIDDEN
-                                    );
-                                }
+                                UI_SetMasterPopup(encoders[i].active ? 1 : 0);
                             }
 
                             ESP_LOGI(

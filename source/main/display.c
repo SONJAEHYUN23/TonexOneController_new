@@ -110,6 +110,7 @@ enum UIElements
     UI_ELEMENT_PRESET_DESCRIPTION,
     UI_ELEMENT_PARAMETERS,
     UI_ELEMENT_TOAST,
+    UI_ELEMENT_MASTER_POPUP,
 };
 
 enum UIAction
@@ -985,6 +986,19 @@ void UI_SetPresetLabel(uint16_t index, char* name)
         ESP_LOGE(TAG, "UI Update queue send failed!");            
     }
 }
+void UI_SetMasterPopup(uint8_t visible)
+{
+    tUIUpdate ui_update;
+
+    ui_update.ElementID = UI_ELEMENT_MASTER_POPUP;
+    ui_update.Action = UI_ACTION_SET_STATE;
+    ui_update.Value = visible;
+
+    if (xQueueSend(ui_update_queue, (void*)&ui_update, 0) != pdPASS)
+    {
+        ESP_LOGE(TAG, "UI Master Popup queue send failed!");
+    }
+}
 
 /****************************************************************************
 * NAME:        
@@ -1368,6 +1382,10 @@ static  __attribute__((unused)) uint8_t update_ui_element(tUIUpdate* update)
             ui_show_toast(update->Text);
         } break;
 
+        case UI_ELEMENT_MASTER_POPUP:
+        {
+            element_1 = objects.ui_master_popup;
+        } break;
 
         default:
         {
@@ -1448,6 +1466,24 @@ static  __attribute__((unused)) uint8_t update_ui_element(tUIUpdate* update)
 
                     lv_obj_add_flag(objects.ui_wi_fi_status_disconn_1, LV_OBJ_FLAG_HIDDEN);
                     lv_obj_clear_flag(objects.ui_wi_fi_status_conn_1, LV_OBJ_FLAG_HIDDEN);
+                }
+            }
+
+            else if (element_1 == objects.ui_master_popup)
+            {
+                if (update->Value)
+                {
+                    lv_obj_clear_flag(
+                        objects.ui_master_popup,
+                        LV_OBJ_FLAG_HIDDEN
+                    );
+                }
+                else
+                {
+                    lv_obj_add_flag(
+                        objects.ui_master_popup,
+                        LV_OBJ_FLAG_HIDDEN
+                    );
                 }
             }
 #if CONFIG_TONEX_CONTROLLER_DISPLAY_FULL_UI
