@@ -2720,7 +2720,19 @@ uint8_t tonex_update_ui_parameters(void)
                     lv_label_set_text(objects.ui_volume_value, value_string);        
                     
                     // set user data for later use
-                    lv_obj_set_user_data(objects.ui_volume_value, (void*)(uintptr_t)TONEX_GLOBAL_MASTER_VOLUME);                                        
+                    lv_obj_set_user_data(objects.ui_volume_value, (void*)(uintptr_t)TONEX_GLOBAL_MASTER_VOLUME);  
+                    
+                                    // 새 MAIN master volume popup
+                    lv_bar_set_range(objects.ui_master_popup_bar,
+                                    round(param_entry->Min),
+                                    round(param_entry->Max));
+
+                    lv_bar_set_value(objects.ui_master_popup_bar,
+                                    round(param_entry->Value),
+                                    LV_ANIM_OFF);
+
+                    lv_label_set_text(objects.ui_master_popup_value, value_string);
+                    
                 } break;
 
             
