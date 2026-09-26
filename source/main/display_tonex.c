@@ -153,7 +153,8 @@ void tonex_action_effect_icon_clicked(lv_event_t * e)
 
     if (event_code == LV_EVENT_SHORT_CLICKED) 
     {
-        if (event_object == objects.ui_icon_reverb)
+        if (event_object == objects.ui_icon_reverb ||
+            event_object == objects.ui_icon_reverb_1)
         {
             ESP_LOGI(TAG, "UI Toggle reverb");
 
@@ -170,7 +171,8 @@ void tonex_action_effect_icon_clicked(lv_event_t * e)
 
             usb_modify_parameter(TONEX_PARAM_REVERB_ENABLE, value);   
         }
-        else if (event_object == objects.ui_icon_delay)
+        else if (event_object == objects.ui_icon_delay ||
+                 event_object == objects.ui_icon_delay_1)
         {
             ESP_LOGI(TAG, "UI Toggle delay");
         
@@ -187,7 +189,8 @@ void tonex_action_effect_icon_clicked(lv_event_t * e)
 
             usb_modify_parameter(TONEX_PARAM_DELAY_ENABLE, value);   
         }
-        else if (event_object == objects.ui_icon_mod)
+        else if (event_object == objects.ui_icon_mod ||
+                 event_object == objects.ui_icon_mod_1)
         {
             ESP_LOGI(TAG, "UI Toggle mod");
             
@@ -204,7 +207,8 @@ void tonex_action_effect_icon_clicked(lv_event_t * e)
 
             usb_modify_parameter(TONEX_PARAM_MODULATION_ENABLE, value);  
         } 
-        else if (event_object == objects.ui_icon_comp)
+        else if (event_object == objects.ui_icon_comp ||
+                 event_object == objects.ui_icon_comp_1)
         {
             ESP_LOGI(TAG, "UI Toggle comp");
             
@@ -221,7 +225,8 @@ void tonex_action_effect_icon_clicked(lv_event_t * e)
 
             usb_modify_parameter(TONEX_PARAM_COMP_ENABLE, value);  
         }
-        else if (event_object == objects.ui_icon_cab)
+        else if (event_object == objects.ui_icon_cab ||
+                 event_object == objects.ui_icon_cab_1)
         {
             ESP_LOGI(TAG, "UI Toggle cab");
             
@@ -239,7 +244,8 @@ void tonex_action_effect_icon_clicked(lv_event_t * e)
 
             usb_modify_parameter(TONEX_PARAM_CABINET_TYPE, value); 
         }
-        else if (event_object == objects.ui_icon_amp)
+        else if (event_object == objects.ui_icon_amp ||
+                 event_object == objects.ui_icon_amp_1)
         {
             ESP_LOGI(TAG, "UI Toggle amp");
             
@@ -256,7 +262,8 @@ void tonex_action_effect_icon_clicked(lv_event_t * e)
 
             usb_modify_parameter(TONEX_PARAM_MODEL_AMP_ENABLE, value); 
         }
-        else if (event_object == objects.ui_icon_gate)
+        else if (event_object == objects.ui_icon_gate ||
+                 event_object == objects.ui_icon_gate_1)
         {
             ESP_LOGI(TAG, "UI Toggle gate");
             
@@ -273,10 +280,26 @@ void tonex_action_effect_icon_clicked(lv_event_t * e)
 
             usb_modify_parameter(TONEX_PARAM_NOISE_GATE_ENABLE, value);   
         }
-        else if (event_object == objects.ui_icon_eq)
-        {   
-            // no short press action
-        } 
+        else if (event_object == objects.ui_icon_eq ||
+                 event_object == objects.ui_icon_eq_1)
+        {
+            ESP_LOGI(TAG, "UI Toggle EQ Pre/Post");
+
+            tonex_params_get_locked_access(&param_ptr);
+
+            if (param_ptr[TONEX_PARAM_EQ_POST].Value == 0.0f)
+            {
+                value = 1.0f;
+            }
+            else
+            {
+                value = 0.0f;
+            }
+
+            tonex_params_release_locked_access();
+
+            usb_modify_parameter(TONEX_PARAM_EQ_POST, value);
+        }
     }
     else if (event_code == LV_EVENT_LONG_PRESSED) 
     {
