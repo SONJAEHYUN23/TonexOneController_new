@@ -92,7 +92,7 @@
     },
     {
       "name": "WS43B",
-      "binaryDir": "build_ws43b",
+      "binaryDir": "D:/b",
       "cacheVariables": {
         "SDKCONFIG_DEFAULTS": "sdkconfig.defaults;sdkconfig.ws43B",
         "SDKCONFIG": "build_ws43b/sdkconfig"
