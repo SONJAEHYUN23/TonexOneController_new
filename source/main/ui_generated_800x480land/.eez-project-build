@@ -55,7 +55,6 @@
     "ui_image_effect_icon_reverb_on_s4.c",
     "ui_image_eq_off.c",
     "ui_image_eq_on.c",
-    "ui_image_home_button.c",
     "ui_image_mod_off.c",
     "ui_image_mod_on.c",
     "ui_image_next.c",

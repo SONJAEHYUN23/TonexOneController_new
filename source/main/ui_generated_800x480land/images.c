@@ -1,6 +1,6 @@
 #include "images.h"
 
-const ext_img_desc_t images[116] = {
+const ext_img_desc_t images[115] = {
     { "arrow_left", &img_arrow_left },
     { "arrow_right", &img_arrow_right },
     { "bt_conn", &img_bt_conn },
@@ -116,5 +116,4 @@ const ext_img_desc_t images[116] = {
     { "tc_on", &img_tc_on },
     { "amp_disabled", &img_amp_disabled },
     { "cab_disabled", &img_cab_disabled },
-    { "Home_Button", &img_home_button },
 };

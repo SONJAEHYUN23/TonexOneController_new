@@ -104,7 +104,7 @@ void create_screen_screen_main() {
                             // ui_WiFiStatusConn_1
                             lv_obj_t *obj = lv_img_create(parent_obj);
                             objects.ui_wi_fi_status_conn_1 = obj;
-                            lv_obj_set_pos(obj, 625, -19);
+                            lv_obj_set_pos(obj, 545, -18);
                             lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
                             lv_img_set_src(obj, &img_wifi_conn);
                             lv_obj_add_flag(obj, LV_OBJ_FLAG_HIDDEN);
@@ -113,7 +113,7 @@ void create_screen_screen_main() {
                             // ui_BTStatusConn_1
                             lv_obj_t *obj = lv_img_create(parent_obj);
                             objects.ui_bt_status_conn_1 = obj;
-                            lv_obj_set_pos(obj, 680, -19);
+                            lv_obj_set_pos(obj, 603, -18);
                             lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
                             lv_img_set_src(obj, &img_bt_conn);
                             lv_obj_add_flag(obj, LV_OBJ_FLAG_HIDDEN);
@@ -122,7 +122,7 @@ void create_screen_screen_main() {
                             // ui_USBStatusOK_1
                             lv_obj_t *obj = lv_img_create(parent_obj);
                             objects.ui_usb_status_ok_1 = obj;
-                            lv_obj_set_pos(obj, 709, -21);
+                            lv_obj_set_pos(obj, 636, -20);
                             lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
                             lv_img_set_src(obj, &img_usb_ok);
                             lv_obj_add_flag(obj, LV_OBJ_FLAG_HIDDEN);
@@ -491,37 +491,31 @@ void create_screen_screen_main() {
                             // ui_master_popup
                             lv_obj_t *obj = lv_obj_create(parent_obj);
                             objects.ui_master_popup = obj;
-                            lv_obj_set_pos(obj, 567, 16);
-                            lv_obj_set_size(obj, 226, 96);
+                            lv_obj_set_pos(obj, 20, 182);
+                            lv_obj_set_size(obj, 369, 107);
+                            lv_obj_add_flag(obj, LV_OBJ_FLAG_HIDDEN);
                             lv_obj_set_style_bg_color(obj, lv_color_hex(0x070606), LV_PART_MAIN | LV_STATE_DEFAULT);
                             lv_obj_set_style_bg_opa(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
                             lv_obj_set_style_border_opa(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
                             {
                                 lv_obj_t *parent_obj = obj;
                                 {
-                                    // ui_master_popup_bar
+                                    // ui_VolumeSlider_1
                                     lv_obj_t *obj = lv_bar_create(parent_obj);
-                                    objects.ui_master_popup_bar = obj;
-                                    lv_obj_set_pos(obj, 49, 26);
+                                    objects.ui_volume_slider_1 = obj;
+                                    lv_obj_set_pos(obj, 95, 32);
                                     lv_obj_set_size(obj, 125, 11);
                                     lv_bar_set_value(obj, 25, LV_ANIM_OFF);
                                 }
                                 {
-                                    // ui_master_popup_value
+                                    // ui_VolumeValue_1
                                     lv_obj_t *obj = lv_label_create(parent_obj);
-                                    objects.ui_master_popup_value = obj;
-                                    lv_obj_set_pos(obj, 94, -4);
+                                    objects.ui_volume_value_1 = obj;
+                                    lv_obj_set_pos(obj, 142, -4);
                                     lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
                                     lv_obj_set_style_text_opa(obj, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
                                     lv_obj_set_style_text_font(obj, &lv_font_montserrat_24, LV_PART_MAIN | LV_STATE_DEFAULT);
                                     lv_label_set_text_static(obj, "50");
-                                }
-                                {
-                                    lv_obj_t *obj = lv_label_create(parent_obj);
-                                    lv_obj_set_pos(obj, 124, -4);
-                                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
-                                    lv_obj_set_style_text_font(obj, &lv_font_montserrat_24, LV_PART_MAIN | LV_STATE_DEFAULT);
-                                    lv_label_set_text_static(obj, "%");
                                 }
                             }
                         }
@@ -793,7 +787,7 @@ void create_screen_screen1() {
                             // ui_WiFiStatusConn
                             lv_obj_t *obj = lv_img_create(parent_obj);
                             objects.ui_wi_fi_status_conn = obj;
-                            lv_obj_set_pos(obj, 625, -19);
+                            lv_obj_set_pos(obj, 556, -18);
                             lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
                             lv_img_set_src(obj, &img_wifi_conn);
                             lv_obj_add_flag(obj, LV_OBJ_FLAG_HIDDEN);
@@ -802,7 +796,7 @@ void create_screen_screen1() {
                             // ui_BTStatusConn
                             lv_obj_t *obj = lv_img_create(parent_obj);
                             objects.ui_bt_status_conn = obj;
-                            lv_obj_set_pos(obj, 680, -19);
+                            lv_obj_set_pos(obj, 611, -18);
                             lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
                             lv_img_set_src(obj, &img_bt_conn);
                             lv_obj_add_flag(obj, LV_OBJ_FLAG_HIDDEN);
@@ -811,7 +805,7 @@ void create_screen_screen1() {
                             // ui_USBStatusOK
                             lv_obj_t *obj = lv_img_create(parent_obj);
                             objects.ui_usb_status_ok = obj;
-                            lv_obj_set_pos(obj, 709, -21);
+                            lv_obj_set_pos(obj, 640, -20);
                             lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
                             lv_img_set_src(obj, &img_usb_ok);
                             lv_obj_add_flag(obj, LV_OBJ_FLAG_HIDDEN);

@@ -45,8 +45,8 @@ typedef struct _objects_t {
     lv_obj_t *ui_icon_gate_1;
     lv_obj_t *ui_icon_eq_1;
     lv_obj_t *ui_master_popup;
-    lv_obj_t *ui_master_popup_bar;
-    lv_obj_t *ui_master_popup_value;
+    lv_obj_t *ui_volume_slider_1;
+    lv_obj_t *ui_volume_value_1;
     lv_obj_t *bottom_fx;
     lv_obj_t *bottom_fx_gain;
     lv_obj_t *ui_amplifier_gain_bar_1;
